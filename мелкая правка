@@ -1,0 +1,16 @@
+
+I had the same problem and "solved" it but with a suboptimal solution:
+
+Directly (!) in GraphAware\Common\Driver\SessionInterface, I tried to replace
+
+public function run($statement, array $parameters = Array, $tag = NULL);
+
+by
+
+public function run($statement, $parameters = array(), $tag = null);
+
+which seems to be what is expected by Graphaware\Neo4j\Client\HttpDriver\Session
+
+And it works... for now (until package update?)
+
+Could that be a bug?
